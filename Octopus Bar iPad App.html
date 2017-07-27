@@ -1,0 +1,638 @@
+<html>
+<head>
+<title>
+</title>
+<style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+#scene {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.oct-app:after, .oct-tables > .oct-heading, .oct-header > *, .oct-aside:before, .oct-aside:after, .oct-button, .oct-panel, .oct-block, .oct-ratings > .oct-heading, .oct-rating {
+  -webkit-transition: all 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: all 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.oct-app {
+  background-color: #434254;
+  height: 500px;
+  width: 800px;
+  overflow: hidden;
+  color: white;
+}
+.oct-app:after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/181794/22995776159_6a0907f0e3_z.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: 0;
+}
+#scene:checked + .oct-app:after {
+  -webkit-transform: translateX(-25%) scale(1.5);
+          transform: translateX(-25%) scale(1.5);
+}
+.oct-app > * {
+  z-index: 1;
+}
+
+.oct-tables {
+  position: absolute;
+  top: 110px;
+  width: 50%;
+  left: 25%;
+  text-align: center;
+}
+.oct-tables > .oct-heading {
+  margin-top: 0;
+  display: inline-block;
+  font-size: 1.563rem;
+}
+#scene:checked + .oct-app .oct-tables > .oct-heading {
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.oct-list.-tables {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  counter-reset: table;
+}
+
+.oct-item.-table {
+  -webkit-flex-basis: 33.33333%;
+      -ms-flex-preferred-size: 33.33333%;
+          flex-basis: 33.33333%;
+  height: 5.5rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+.oct-item.-table.-inactive:before {
+  opacity: 0.5;
+}
+#scene:not(:checked) + .oct-app .oct-item.-table {
+  -webkit-animation: table-in 0.8s cubic-bezier(0.86, 0, 0.07, 1) both;
+          animation: table-in 0.8s cubic-bezier(0.86, 0, 0.07, 1) both;
+}
+#scene:not(:checked) + .oct-app .oct-item.-table:nth-child(1) {
+  -webkit-animation-delay: 0.05s;
+          animation-delay: 0.05s;
+}
+#scene:not(:checked) + .oct-app .oct-item.-table:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+#scene:not(:checked) + .oct-app .oct-item.-table:nth-child(3) {
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+}
+#scene:not(:checked) + .oct-app .oct-item.-table:nth-child(4) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+#scene:not(:checked) + .oct-app .oct-item.-table:nth-child(5) {
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+}
+#scene:not(:checked) + .oct-app .oct-item.-table:nth-child(6) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+#scene:not(:checked) + .oct-app .oct-item.-table:nth-child(7) {
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
+}
+#scene:not(:checked) + .oct-app .oct-item.-table:nth-child(8) {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+#scene:not(:checked) + .oct-app .oct-item.-table:nth-child(9) {
+  -webkit-animation-delay: 0.45s;
+          animation-delay: 0.45s;
+}
+#scene:checked + .oct-app .oct-item.-table {
+  -webkit-animation: table-out 0.8s cubic-bezier(0.86, 0, 0.07, 1) both;
+          animation: table-out 0.8s cubic-bezier(0.86, 0, 0.07, 1) both;
+}
+.oct-item.-table:before {
+  counter-increment: table;
+  content: counter(table);
+  display: block;
+  line-height: 3rem;
+  width: 3rem;
+  background: white;
+  color: black;
+  border-radius: 50%;
+}
+
+@-webkit-keyframes table-in {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes table-in {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes table-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes table-out {
+  to {
+    opacity: 0;
+  }
+}
+.oct-header {
+  width: 50%;
+  position: absolute;
+  right: 0;
+  z-index: 2;
+  height: 110px;
+}
+.oct-header:before, .oct-header:after {
+  content: ' ';
+  display: table;
+}
+.oct-header:after {
+  clear: both;
+}
+.oct-header > * {
+  color: white;
+  display: inline-block;
+  float: left;
+  clear: left;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  padding: 0 1rem;
+}
+.oct-header > .oct-heading {
+  font-size: 2.44rem;
+  margin-top: 0.5rem;
+  font-weight: 300;
+}
+.oct-header > .oct-heading:after {
+  content: '';
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/181794/octopus.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 2rem;
+  width: 2rem;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-left: 0.5rem;
+  opacity: 0.65;
+  top: -4px;
+}
+
+.oct-heading {
+  margin-bottom: 0;
+}
+.oct-heading.-h1 {
+  font-weight: 300;
+}
+
+.oct-aside {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.oct-aside > * {
+  z-index: 1;
+}
+.oct-aside:before, .oct-aside:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+.oct-aside:before {
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-transition-timing-function: cubic-bezier(0.5, 0.5, 0, 1);
+          transition-timing-function: cubic-bezier(0.5, 0.5, 0, 1);
+}
+.oct-aside:after {
+  background-color: #FE606F;
+}
+.oct-aside:after, .oct-aside:before {
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+#scene:not(:checked) + .oct-app .oct-aside:before {
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0.3, 0.3);
+          transition-timing-function: cubic-bezier(1, 0, 0.3, 0.3);
+}
+.oct-aside > .oct-button {
+  opacity: 0;
+}
+#scene:checked + .oct-app .oct-aside > .oct-button {
+  opacity: 1;
+}
+
+.oct-button {
+  margin: 1rem;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  text-align: center;
+  padding: 1rem;
+  background-color: #FBFF87;
+  color: #434254;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  -webkit-flex-basis: 50%;
+      -ms-flex-preferred-size: 50%;
+          flex-basis: 50%;
+}
+.oct-button[for] {
+  cursor: pointer;
+}
+.oct-button.-negative {
+  background-color: #FE606F;
+  color: white;
+}
+.oct-button.-positive {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+#scene:checked + .oct-app .oct-button.-negative {
+  -webkit-transform: translateY(200%);
+          transform: translateY(200%);
+}
+#scene:checked + .oct-app .oct-button.-positive {
+  -webkit-transform: translateY(150%);
+          transform: translateY(150%);
+}
+
+.oct-panel {
+  background-color: #fff;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-basis: 70%;
+      -ms-flex-preferred-size: 70%;
+          flex-basis: 70%;
+  height: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+}
+#scene:checked + .oct-app .oct-panel {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.oct-block {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-flex-basis: 50%;
+      -ms-flex-preferred-size: 50%;
+          flex-basis: 50%;
+  height: 6rem;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.oct-action {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem;
+}
+
+.oct-label {
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ADC8D1;
+  font-weight: 600;
+}
+
+.oct-ratings {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  padding: 1rem;
+}
+.oct-ratings > .oct-heading {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  padding: 1rem 2rem;
+  font-size: 3rem;
+}
+#scene:checked + .oct-app .oct-ratings > .oct-heading {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.oct-rating {
+  -webkit-transition-delay: 0.05s;
+          transition-delay: 0.05s;
+  padding: 1rem 2rem;
+  -webkit-transform: translateX(-120%);
+          transform: translateX(-120%);
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+#scene:checked + .oct-app .oct-rating {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.oct-paragraph {
+  font-size: 12px;
+  overflow: hidden;
+  margin: 0.5em 0;
+}
+
+.oct-description {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.oct-address {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.oct-footer {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 50%;
+  left: 25%;
+  bottom: 0;
+  position: absolute;
+  margin-bottom: 1rem;
+  z-index: 2;
+}
+
+.oct-name {
+  font-weight: 600;
+}
+
+.oct-stars, .oct-name {
+  display: inline-block;
+}
+
+.oct-avatar {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.5rem;
+  float: left;
+}
+
+[class*="fa-star"] {
+  color: #FBFF87;
+}
+
+.fa-heart-o {
+  color: #7D7BA5;
+}
+
+.fa-times {
+  color: #62AFFF;
+  vertical-align: top;
+}
+
+.fa:not([class*="fa-star"]) {
+  margin-bottom: 0.5rem;
+}
+
+.fa:not(.fa-star):not(.fa-heart-o):not(.fa-star-o):not(.fa-times) {
+  color: #FE606F;
+}
+
+#scene:checked + .oct-app .oct-aside:after, #scene:checked + .oct-app .oct-aside:before {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+#scene:checked + .oct-app .oct-header > * {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+body {
+  font-family: Open Sans, sans-serif;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: -webkit-linear-gradient(#33CCFF, #3388EE);
+  background: linear-gradient(#33CCFF, #3388EE);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+  position: relative;
+}
+
+</style>
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<input type="checkbox" id="scene" />
+<div class="oct-app">
+  <header class="oct-header">
+    <h1 class="oct-heading -h1">Octopus Bar</h1>
+    <div class="oct-address">567 Hudson St</div>
+    <div class="oct-description">Fresh fruit and fish</div>
+  </header>
+  <div class="oct-tables">
+    <h2 class="oct-heading -h2">Choose a table:</h2>
+    <ul class="oct-list -tables">
+      <li class="oct-item -table"></li>
+      <li class="oct-item -table -inactive"></li>
+      <li class="oct-item -table"></li>
+      <li class="oct-item -table"></li>
+      <li class="oct-item -table"></li>
+      <li class="oct-item -table -inactive"></li>
+      <li class="oct-item -table"></li>
+      <li class="oct-item -table -inactive"></li>
+      <li class="oct-item -table -inactive"></li>
+    </ul>
+  </div>
+
+  <footer class="oct-footer">
+    <label for="scene" class="oct-button -negative">Cancel</label>
+    <div class="oct-button -positive">Continue</div>
+  </footer>
+
+  <div class="oct-aside">
+    <label for="scene" class="oct-button">Book</label>
+    <div class="oct-panel">
+      <div class="oct-block">
+        <i class="fa fa-heart-o fa-lg"></i>
+        <div class="oct-label">Like</div>
+      </div>
+      <div class="oct-block">
+        <i class="fa fa-share-alt fa-lg"></i>
+        <div class="oct-label">Share</div>
+      </div>
+      <div class="oct-block">
+        <i class="fa fa-plus fa-lg"></i>
+        <div class="oct-label">Add To</div>
+      </div>
+      <div class="oct-block">
+        <i class="fa fa-shield fa-lg"></i>
+        <div class="oct-label">Report</div>
+      </div>
+      <div class="oct-action">
+        <i class="fa fa-times"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="oct-ratings">
+    <h1 class="oct-heading">Ratings:</h1>
+    <div class="oct-rating">
+      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/181794/Screen_Shot_2015-12-13_at_8.16.19_AM.png" alt="" class="oct-avatar" />
+      <div class="oct-name">Oliver Newton</div>
+      <div class="oct-stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <p class="oct-paragraph">It’s an unforgettable venue for those who like not only to eat out but also enjoy the unique atmosphere and savor delicious refreshments. Fish and fruit are super-fresh and taste awesome!</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
